@@ -111,6 +111,16 @@ pub(crate) fn write_live_snapshot(app_type: &AppType, provider: &Provider) -> Re
             let path = get_claude_settings_path();
             let settings = sanitize_claude_settings_for_live(&provider.settings_config);
             write_json_file(&path, &settings)?;
+
+            // Sync to VS Code Claude Code extension if enabled
+            let app_settings = crate::settings::get_settings();
+            if app_settings.enable_vscode_claude_sync {
+                if let Some(env) = provider.settings_config.get("env") {
+                    if let Err(e) = crate::vscode_sync::sync_env_to_vscode(env) {
+                        log::warn!("同步 VS Code Claude 插件失败: {e}");
+                    }
+                }
+            }
         }
         AppType::Codex => {
             let obj = provider

@@ -125,6 +125,15 @@ pub struct AppSettings {
     /// - Linux: "gnome-terminal" | "konsole" | "xfce4-terminal" | "alacritty" | "kitty" | "ghostty"
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub preferred_terminal: Option<String>,
+
+    // ===== VS Code Claude 插件同步 =====
+    /// 是否同步到 VS Code Claude Code 插件
+    #[serde(default)]
+    pub enable_vscode_claude_sync: bool,
+
+    /// VS Code settings.json 自定义路径（可选，默认自动检测平台路径）
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub vscode_settings_path: Option<String>,
 }
 
 fn default_show_in_tray() -> bool {
@@ -156,6 +165,8 @@ impl Default for AppSettings {
             current_provider_opencode: None,
             skill_sync_method: SyncMethod::default(),
             preferred_terminal: None,
+            enable_vscode_claude_sync: false,
+            vscode_settings_path: None,
         }
     }
 }
@@ -194,6 +205,13 @@ impl AppSettings {
 
         self.opencode_config_dir = self
             .opencode_config_dir
+            .as_ref()
+            .map(|s| s.trim())
+            .filter(|s| !s.is_empty())
+            .map(|s| s.to_string());
+
+        self.vscode_settings_path = self
+            .vscode_settings_path
             .as_ref()
             .map(|s| s.trim())
             .filter(|s| !s.is_empty())
@@ -253,6 +271,10 @@ static SETTINGS_STORE: OnceLock<RwLock<AppSettings>> = OnceLock::new();
 
 fn settings_store() -> &'static RwLock<AppSettings> {
     SETTINGS_STORE.get_or_init(|| RwLock::new(AppSettings::load_from_file()))
+}
+
+pub(crate) fn resolve_override_path_pub(raw: &str) -> PathBuf {
+    resolve_override_path(raw)
 }
 
 fn resolve_override_path(raw: &str) -> PathBuf {

@@ -273,6 +273,8 @@
     "minimizeToTrayDescription": "When checked, clicking the close button will hide to system tray, otherwise the app will exit directly.",
     "enableClaudePluginIntegration": "Apply to Claude Code extension",
     "enableClaudePluginIntegrationDescription": "When enabled, the VS Code Claude Code extension provider will switch with this app",
+    "enableVscodeClaudeSync": "Sync to VS Code Claude extension",
+    "enableVscodeClaudeSyncDescription": "Sync environment variables to VS Code Claude Code extension settings when switching providers",
     "skipClaudeOnboarding": "Skip Claude Code first-run confirmation",
     "skipClaudeOnboardingDescription": "When enabled, Claude Code will skip the first-run confirmation",
     "appVisibility": {

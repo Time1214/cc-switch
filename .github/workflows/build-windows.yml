@@ -1,0 +1,94 @@
+name: Build Windows x64
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    runs-on: windows-2022
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10.12.3
+          run_install: false
+
+      - name: Get pnpm store directory
+        id: pnpm-store
+        shell: bash
+        run: echo "path=$(pnpm store path --silent)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-store.outputs.path }}
+          key: windows-x64-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: windows-x64-pnpm-store-
+
+      - name: Cache Rust build
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            src-tauri/target
+          key: windows-x64-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: windows-x64-cargo-
+
+      - name: Install frontend deps
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Tauri App (no updater signing)
+        shell: pwsh
+        run: pnpm tauri build --bundles msi
+        env:
+          # Skip updater signing by providing a dummy key
+          TAURI_SIGNING_PRIVATE_KEY: ""
+
+      - name: Prepare artifacts
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          New-Item -ItemType Directory -Force -Path artifacts | Out-Null
+
+          # Find MSI
+          $msi = Get-ChildItem -Path 'src-tauri/target/release/bundle' -Recurse -Include *.msi -ErrorAction SilentlyContinue | Select-Object -First 1
+          if ($null -ne $msi) {
+            Copy-Item $msi.FullName (Join-Path artifacts $msi.Name)
+            Write-Host "MSI copied: $($msi.Name)"
+          } else {
+            Write-Warning 'No MSI found'
+          }
+
+          # Portable exe
+          $exePath = 'src-tauri/target/release/cc-switch.exe'
+          if (Test-Path $exePath) {
+            $portableDir = 'artifacts/CC-Switch-Portable'
+            New-Item -ItemType Directory -Force -Path $portableDir | Out-Null
+            Copy-Item $exePath $portableDir
+            @('# CC Switch portable build marker', 'portable=true') | Set-Content -Path (Join-Path $portableDir 'portable.ini') -Encoding UTF8
+            Compress-Archive -Path "$portableDir/*" -DestinationPath 'artifacts/CC-Switch-Windows-Portable.zip' -Force
+            Remove-Item -Recurse -Force $portableDir
+            Write-Host 'Portable zip created'
+          }
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: cc-switch-windows-x64
+          path: artifacts/*
+          retention-days: 30

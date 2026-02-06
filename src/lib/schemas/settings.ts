@@ -13,6 +13,8 @@ export const settingsSchema = z.object({
   minimizeToTrayOnClose: z.boolean(),
   enableClaudePluginIntegration: z.boolean().optional(),
   skipClaudeOnboarding: z.boolean().optional(),
+  enableVscodeClaudeSync: z.boolean().optional(),
+  vscodeSettingsPath: z.string().trim().optional(),
   launchOnStartup: z.boolean().optional(),
   language: z.enum(["en", "zh", "ja"]).optional(),
 

@@ -273,6 +273,8 @@
     "minimizeToTrayDescription": "勾选后点击关闭按钮会隐藏到系统托盘，取消则直接退出应用。",
     "enableClaudePluginIntegration": "应用到 Claude Code 插件",
     "enableClaudePluginIntegrationDescription": "开启后 Vscode Claude Code 插件的供应商将随本软件切换",
+    "enableVscodeClaudeSync": "同步到 VS Code Claude 插件",
+    "enableVscodeClaudeSyncDescription": "切换供应商时同步环境变量到 VS Code 的 Claude Code 插件配置",
     "skipClaudeOnboarding": "跳过 Claude Code 初次安装确认",
     "skipClaudeOnboardingDescription": "开启后跳过 Claude Code 初次安装确认",
     "appVisibility": {

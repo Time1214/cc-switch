@@ -273,6 +273,8 @@
     "minimizeToTrayDescription": "チェックすると閉じるボタンでトレイに隠し、オフならアプリを終了します。",
     "enableClaudePluginIntegration": "Claude Code 拡張に適用",
     "enableClaudePluginIntegrationDescription": "オンにすると VS Code の Claude Code 拡張のプロバイダーも同期します",
+    "enableVscodeClaudeSync": "VS Code Claude 拡張に同期",
+    "enableVscodeClaudeSyncDescription": "プロバイダー切替時に VS Code の Claude Code 拡張に環境変数を同期します",
     "skipClaudeOnboarding": "Claude Code の初回確認をスキップ",
     "skipClaudeOnboardingDescription": "オンにすると Claude Code の初回インストール確認をスキップします",
     "appVisibility": {

@@ -211,6 +211,12 @@ export interface Settings {
   // Windows: "cmd" | "powershell" | "wt"
   // Linux: "gnome-terminal" | "konsole" | "xfce4-terminal" | "alacritty" | "kitty" | "ghostty"
   preferredTerminal?: string;
+
+  // ===== VS Code Claude 插件同步 =====
+  // 是否同步到 VS Code Claude Code 插件
+  enableVscodeClaudeSync?: boolean;
+  // VS Code settings.json 自定义路径（可选，默认自动检测平台路径）
+  vscodeSettingsPath?: string;
 }
 
 export interface SessionMeta {

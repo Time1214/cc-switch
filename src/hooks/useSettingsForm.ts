@@ -85,6 +85,7 @@ export function useSettingsForm(): UseSettingsFormResult {
         data.enableClaudePluginIntegration ?? false,
       silentStartup: data.silentStartup ?? false,
       skipClaudeOnboarding: data.skipClaudeOnboarding ?? false,
+      enableVscodeClaudeSync: data.enableVscodeClaudeSync ?? false,
       claudeConfigDir: sanitizeDir(data.claudeConfigDir),
       codexConfigDir: sanitizeDir(data.codexConfigDir),
       geminiConfigDir: sanitizeDir(data.geminiConfigDir),

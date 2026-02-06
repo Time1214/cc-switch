@@ -46,6 +46,16 @@ export function WindowSettings({ settings, onChange }: WindowSettingsProps) {
         />
 
         <ToggleRow
+          icon={<MonitorUp className="h-4 w-4 text-blue-500" />}
+          title={t("settings.enableVscodeClaudeSync")}
+          description={t("settings.enableVscodeClaudeSyncDescription")}
+          checked={!!settings.enableVscodeClaudeSync}
+          onCheckedChange={(value) =>
+            onChange({ enableVscodeClaudeSync: value })
+          }
+        />
+
+        <ToggleRow
           icon={<MonitorUp className="h-4 w-4 text-cyan-500" />}
           title={t("settings.skipClaudeOnboarding")}
           description={t("settings.skipClaudeOnboardingDescription")}
