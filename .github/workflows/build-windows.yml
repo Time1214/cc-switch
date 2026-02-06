@@ -52,12 +52,17 @@ jobs:
       - name: Install frontend deps
         run: pnpm install --frozen-lockfile
 
-      - name: Build Tauri App (no updater signing)
+      - name: Disable updater signing
+        shell: pwsh
+        run: |
+          $conf = Get-Content src-tauri/tauri.conf.json -Raw | ConvertFrom-Json
+          $conf.bundle.createUpdaterArtifacts = $false
+          $conf | ConvertTo-Json -Depth 10 | Set-Content src-tauri/tauri.conf.json -Encoding UTF8
+          Write-Host "createUpdaterArtifacts set to false"
+
+      - name: Build Tauri App
         shell: pwsh
         run: pnpm tauri build --bundles msi
-        env:
-          # Skip updater signing by providing a dummy key
-          TAURI_SIGNING_PRIVATE_KEY: ""
 
       - name: Prepare artifacts
         shell: pwsh
