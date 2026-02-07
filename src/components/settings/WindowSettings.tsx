@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import type { SettingsFormState } from "@/hooks/useSettings";
 import { AppWindow, MonitorUp, Power, EyeOff } from "lucide-react";
 import { ToggleRow } from "@/components/ui/toggle-row";
+import { Input } from "@/components/ui/input";
 
 interface WindowSettingsProps {
   settings: SettingsFormState;
@@ -45,15 +46,37 @@ export function WindowSettings({ settings, onChange }: WindowSettingsProps) {
           }
         />
 
-        <ToggleRow
-          icon={<MonitorUp className="h-4 w-4 text-blue-500" />}
-          title={t("settings.enableVscodeClaudeSync")}
-          description={t("settings.enableVscodeClaudeSyncDescription")}
-          checked={!!settings.enableVscodeClaudeSync}
-          onCheckedChange={(value) =>
-            onChange({ enableVscodeClaudeSync: value })
-          }
-        />
+        <div className="space-y-2">
+          <ToggleRow
+            icon={<MonitorUp className="h-4 w-4 text-blue-500" />}
+            title={t("settings.enableVscodeClaudeSync")}
+            description={t("settings.enableVscodeClaudeSyncDescription")}
+            checked={!!settings.enableVscodeClaudeSync}
+            onCheckedChange={(value) =>
+              onChange({ enableVscodeClaudeSync: value })
+            }
+          />
+          {settings.enableVscodeClaudeSync && (
+            <div className="ml-11 space-y-1.5 rounded-lg border border-border/40 bg-muted/30 p-3">
+              <p className="text-xs font-medium text-foreground">
+                {t("settings.vscodeSettingsPath")}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {t("settings.vscodeSettingsPathDescription")}
+              </p>
+              <Input
+                value={settings.vscodeSettingsPath ?? ""}
+                placeholder={t("settings.vscodeSettingsPathPlaceholder")}
+                className="text-xs"
+                onChange={(e) =>
+                  onChange({
+                    vscodeSettingsPath: e.target.value || undefined,
+                  })
+                }
+              />
+            </div>
+          )}
+        </div>
 
         <ToggleRow
           icon={<MonitorUp className="h-4 w-4 text-cyan-500" />}

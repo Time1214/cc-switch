@@ -275,6 +275,9 @@
     "enableClaudePluginIntegrationDescription": "开启后 Vscode Claude Code 插件的供应商将随本软件切换",
     "enableVscodeClaudeSync": "同步到 VS Code Claude 插件",
     "enableVscodeClaudeSyncDescription": "切换供应商时同步环境变量到 VS Code 的 Claude Code 插件配置",
+    "vscodeSettingsPath": "VS Code settings.json 路径",
+    "vscodeSettingsPathDescription": "留空则自动检测默认路径，支持 VS Code Insiders 等变体的自定义路径",
+    "vscodeSettingsPathPlaceholder": "留空使用默认路径，如 C:\\Users\\xxx\\AppData\\Roaming\\Code\\User\\settings.json",
     "skipClaudeOnboarding": "跳过 Claude Code 初次安装确认",
     "skipClaudeOnboardingDescription": "开启后跳过 Claude Code 初次安装确认",
     "appVisibility": {

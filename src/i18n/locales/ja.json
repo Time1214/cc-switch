@@ -275,6 +275,9 @@
     "enableClaudePluginIntegrationDescription": "オンにすると VS Code の Claude Code 拡張のプロバイダーも同期します",
     "enableVscodeClaudeSync": "VS Code Claude 拡張に同期",
     "enableVscodeClaudeSyncDescription": "プロバイダー切替時に VS Code の Claude Code 拡張に環境変数を同期します",
+    "vscodeSettingsPath": "VS Code settings.json パス",
+    "vscodeSettingsPathDescription": "空欄にするとデフォルトパスを自動検出します。VS Code Insiders などのカスタムパスを指定できます。",
+    "vscodeSettingsPathPlaceholder": "空欄でデフォルト（例: C:\\Users\\xxx\\AppData\\Roaming\\Code\\User\\settings.json）",
     "skipClaudeOnboarding": "Claude Code の初回確認をスキップ",
     "skipClaudeOnboardingDescription": "オンにすると Claude Code の初回インストール確認をスキップします",
     "appVisibility": {

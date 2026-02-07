@@ -275,6 +275,9 @@
     "enableClaudePluginIntegrationDescription": "When enabled, the VS Code Claude Code extension provider will switch with this app",
     "enableVscodeClaudeSync": "Sync to VS Code Claude extension",
     "enableVscodeClaudeSyncDescription": "Sync environment variables to VS Code Claude Code extension settings when switching providers",
+    "vscodeSettingsPath": "VS Code settings.json path",
+    "vscodeSettingsPathDescription": "Leave empty to auto-detect. Use custom path for VS Code Insiders or other variants.",
+    "vscodeSettingsPathPlaceholder": "Leave empty for default, e.g. C:\\Users\\xxx\\AppData\\Roaming\\Code\\User\\settings.json",
     "skipClaudeOnboarding": "Skip Claude Code first-run confirmation",
     "skipClaudeOnboardingDescription": "When enabled, Claude Code will skip the first-run confirmation",
     "appVisibility": {
