@@ -77,6 +77,10 @@ export const settingsApi = {
     return await invoke("clear_claude_onboarding_skip");
   },
 
+  async clearVscodeClaudeConfig(): Promise<boolean> {
+    return await invoke("clear_vscode_claude_config");
+  },
+
   async saveFileDialog(defaultName: string): Promise<string | null> {
     return await invoke("save_file_dialog", { defaultName });
   },

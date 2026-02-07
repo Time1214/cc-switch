@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "CC Switch",
+    "title": "CC Switch-S",
     "description": "Claude Code / Codex / Gemini CLI 全方位辅助工具"
   },
   "common": {
@@ -162,7 +162,7 @@
     "deleteProvider": "删除供应商",
     "deleteProviderMessage": "确定要删除供应商 \"{{name}}\" 吗？此操作无法撤销。",
     "removeProvider": "移除供应商",
-    "removeProviderMessage": "确定要从配置中移除供应商 \"{{name}}\" 吗？\n\n移除后该供应商将不再生效，但配置数据会保留在 CC Switch 中，您可以随时重新添加。"
+    "removeProviderMessage": "确定要从配置中移除供应商 \"{{name}}\" 吗？\n\n移除后该供应商将不再生效，但配置数据会保留在 CC Switch-S 中，您可以随时重新添加。"
   },
   "settings": {
     "title": "设置",
@@ -194,7 +194,7 @@
       },
       "globalProxy": {
         "title": "全局出站代理",
-        "description": "配置 CC Switch 访问外部 API 时使用的代理"
+        "description": "配置 CC Switch-S 访问外部 API 时使用的代理"
       },
       "data": {
         "title": "数据管理",
@@ -242,7 +242,7 @@
     "themeDark": "深色",
     "themeSystem": "跟随系统",
     "importExport": "SQL 导入导出",
-    "importExportHint": "导入/导出数据库 SQL 备份（仅支持导入由 CC Switch 导出的备份），便于备份或迁移。",
+    "importExportHint": "导入/导出数据库 SQL 备份（仅支持导入由 CC Switch-S 导出的备份），便于备份或迁移。",
     "exportConfig": "导出 SQL 备份",
     "selectConfigFile": "选择 SQL 文件",
     "noFileSelected": "尚未选择配置文件。",
@@ -265,7 +265,7 @@
     "windowBehavior": "窗口行为",
     "windowBehaviorHint": "配置窗口最小化与 Claude 插件联动策略。",
     "launchOnStartup": "开机自启",
-    "launchOnStartupDescription": "随系统启动自动运行 CC Switch",
+    "launchOnStartupDescription": "随系统启动自动运行 CC Switch-S",
     "silentStartup": "静默启动",
     "silentStartupDescription": "程序启动时不显示主窗口，仅在系统托盘运行",
     "autoLaunchFailed": "设置开机自启失败",
@@ -278,6 +278,10 @@
     "vscodeSettingsPath": "VS Code settings.json 路径",
     "vscodeSettingsPathDescription": "留空则自动检测默认路径，支持 VS Code Insiders 等变体的自定义路径",
     "vscodeSettingsPathPlaceholder": "留空使用默认路径，如 C:\\Users\\xxx\\AppData\\Roaming\\Code\\User\\settings.json",
+    "clearVscodeClaudeConfig": "清除 VS Code 插件配置",
+    "clearVscodeClaudeConfigDescription": "移除 VS Code 中 claudeCode.environmentVariables 配置，防止残留",
+    "clearVscodeClaudeConfigSuccess": "VS Code Claude 插件配置已清除",
+    "clearVscodeClaudeConfigFailed": "清除失败: {{error}}",
     "skipClaudeOnboarding": "跳过 Claude Code 初次安装确认",
     "skipClaudeOnboardingDescription": "开启后跳过 Claude Code 初次安装确认",
     "appVisibility": {
@@ -325,8 +329,8 @@
     },
     "configDirectoryOverride": "配置目录覆盖（高级）",
     "configDirectoryDescription": "在 WSL 等环境使用 Claude Code 或 Codex 的时候，可手动指定为 WSL 里的配置目录，供应商数据与主环境保持一致。",
-    "appConfigDir": "CC Switch 配置目录",
-    "appConfigDirDescription": "自定义 CC Switch 的配置存储位置（指定到云同步文件夹即可云同步配置）",
+    "appConfigDir": "CC Switch-S 配置目录",
+    "appConfigDirDescription": "自定义 CC Switch-S 的配置存储位置（指定到云同步文件夹即可云同步配置）",
     "browsePlaceholderApp": "例如：C:\\Users\\Administrator\\.cc-switch",
     "claudeConfigDir": "Claude Code 配置目录",
     "claudeConfigDirDescription": "覆盖 Claude 配置目录 (settings.json)，同时会在同级存放 Claude MCP 的 claude.json。",
@@ -365,7 +369,7 @@
     "importFailedError": "导入配置失败：{{message}}",
     "exportFailedError": "导出配置失败:",
     "restartRequired": "需要重启应用",
-    "restartRequiredMessage": "修改 CC Switch 配置目录后需要重启应用才能生效，是否立即重启？",
+    "restartRequiredMessage": "修改 CC Switch-S 配置目录后需要重启应用才能生效，是否立即重启？",
     "restartNow": "立即重启",
     "restartLater": "稍后重启",
     "restartFailed": "应用重启失败，请手动关闭后重新打开。",
@@ -486,15 +490,15 @@
     "officialHint": "💡 官方供应商使用浏览器登录，无需配置 API Key",
     "getApiKey": "获取 API Key",
     "partnerPromotion": {
-      "zhipu": "智谱 GLM 是 CC Switch 的官方合作伙伴，使用此链接充值可以获得9折优惠",
-      "packycode": "PackyCode 是 CC Switch 的官方合作伙伴，使用此链接注册并在充值时填写 \"cc-switch\" 优惠码，可以享受9折优惠",
+      "zhipu": "智谱 GLM 是 CC Switch-S 的官方合作伙伴，使用此链接充值可以获得9折优惠",
+      "packycode": "PackyCode 是 CC Switch-S 的官方合作伙伴，使用此链接注册并在充值时填写 \"cc-switch\" 优惠码，可以享受9折优惠",
       "minimax_cn": "MiniMax Coding Plan 特惠，Starter 套餐 9.9 元起",
       "minimax_en": "MiniMax Coding Plan 黑五特惠，Starter 套餐现仅 $2/月（2折优惠！）",
       "dmxapi": "Claude Code 专属模型 3.4 折优惠进行中！",
-      "cubence": "Cubence 是 CC Switch 的官方合作伙伴，使用此链接注册并在充值时填写 \"CCSWITCH\" 优惠码，每次充值均可享受9折优惠",
-      "aigocode": "AIGoCode 是 CC Switch 的官方合作伙伴，使用此链接注册首次充值时可以获得10%额度奖励！",
-      "rightcode": "RightCode 是 CC Switch 的官方合作伙伴，使用此链接注册每次充值均可赠送5%额外额度！",
-      "aicodemirror": "AICodeMirror 是 CC Switch 的官方合作伙伴，使用此链接注册可享受8折优惠！"
+      "cubence": "Cubence 是 CC Switch-S 的官方合作伙伴，使用此链接注册并在充值时填写 \"CCSWITCH\" 优惠码，每次充值均可享受9折优惠",
+      "aigocode": "AIGoCode 是 CC Switch-S 的官方合作伙伴，使用此链接注册首次充值时可以获得10%额度奖励！",
+      "rightcode": "RightCode 是 CC Switch-S 的官方合作伙伴，使用此链接注册每次充值均可赠送5%额外额度！",
+      "aicodemirror": "AICodeMirror 是 CC Switch-S 的官方合作伙伴，使用此链接注册可享受8折优惠！"
     },
     "parameterConfig": "参数配置 - {{name}} *",
     "mainModel": "主模型 (可选)",
@@ -846,7 +850,7 @@
       "deleteConfirm": "确定要删除服务器 \"{{id}}\" 吗？此操作无法撤销。",
       "noServers": "暂无服务器",
       "enabledApps": "启用的应用",
-      "noImportFound": "未发现需要导入的 MCP 服务器。所有服务器已在 CC Switch 统一管理中。",
+      "noImportFound": "未发现需要导入的 MCP 服务器。所有服务器已在 CC Switch-S 统一管理中。",
       "importSuccess": "成功导入 {{count}} 个 MCP 服务器",
       "apps": {
         "claude": "Claude",
@@ -1154,10 +1158,10 @@
     "noInstalledDescription": "从仓库发现并安装技能，或导入已有的技能",
     "discover": "发现技能",
     "import": "导入已有",
-    "importDescription": "选择要导入到 CC Switch 统一管理的技能",
+    "importDescription": "选择要导入到 CC Switch-S 统一管理的技能",
     "importSuccess": "成功导入 {{count}} 个技能",
     "importSelected": "导入已选 ({{count}})",
-    "noUnmanagedFound": "未发现需要导入的技能。所有技能已在 CC Switch 统一管理中。",
+    "noUnmanagedFound": "未发现需要导入的技能。所有技能已在 CC Switch-S 统一管理中。",
     "foundIn": "发现于",
     "local": "本地",
     "uninstallConfirm": "确定要卸载技能 \"{{name}}\" 吗？这将从所有应用中移除该技能。",
@@ -1179,7 +1183,7 @@
   },
   "deeplink": {
     "confirmImport": "确认导入供应商配置",
-    "confirmImportDescription": "以下配置将导入到 CC Switch",
+    "confirmImportDescription": "以下配置将导入到 CC Switch-S",
     "importPrompt": "导入提示词",
     "importPromptDescription": "请确认是否导入此系统提示词",
     "importMcp": "导入 MCP Servers",

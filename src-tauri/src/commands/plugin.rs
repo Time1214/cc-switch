@@ -35,6 +35,14 @@ pub async fn is_claude_plugin_applied() -> Result<bool, String> {
     crate::claude_plugin::is_claude_config_applied().map_err(|e| e.to_string())
 }
 
+/// VS Code Claude 插件：清除 claudeCode.environmentVariables 配置
+#[tauri::command]
+pub async fn clear_vscode_claude_config() -> Result<bool, String> {
+    crate::vscode_sync::clear_vscode_env()
+        .map(|_| true)
+        .map_err(|e| e.to_string())
+}
+
 /// Claude Code：跳过初次安装确认（写入 ~/.claude.json 的 hasCompletedOnboarding=true）
 #[tauri::command]
 pub async fn apply_claude_onboarding_skip() -> Result<bool, String> {

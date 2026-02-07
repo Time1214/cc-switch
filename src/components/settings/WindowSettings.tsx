@@ -1,8 +1,12 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { toast } from "sonner";
 import type { SettingsFormState } from "@/hooks/useSettings";
-import { AppWindow, MonitorUp, Power, EyeOff } from "lucide-react";
+import { AppWindow, MonitorUp, Power, EyeOff, Trash2 } from "lucide-react";
 import { ToggleRow } from "@/components/ui/toggle-row";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { settingsApi } from "@/lib/api";
 
 interface WindowSettingsProps {
   settings: SettingsFormState;
@@ -11,6 +15,28 @@ interface WindowSettingsProps {
 
 export function WindowSettings({ settings, onChange }: WindowSettingsProps) {
   const { t } = useTranslation();
+  const [isClearing, setIsClearing] = useState(false);
+
+  const handleClearVscodeConfig = async () => {
+    setIsClearing(true);
+    try {
+      await settingsApi.clearVscodeClaudeConfig();
+      toast.success(
+        t("settings.clearVscodeClaudeConfigSuccess", {
+          defaultValue: "VS Code Claude 插件配置已清除",
+        }),
+      );
+    } catch (error) {
+      toast.error(
+        t("settings.clearVscodeClaudeConfigFailed", {
+          defaultValue: "清除失败: {{error}}",
+          error: (error as Error)?.message ?? String(error),
+        }),
+      );
+    } finally {
+      setIsClearing(false);
+    }
+  };
 
   return (
     <section className="space-y-4">
@@ -57,23 +83,41 @@ export function WindowSettings({ settings, onChange }: WindowSettingsProps) {
             }
           />
           {settings.enableVscodeClaudeSync && (
-            <div className="ml-11 space-y-1.5 rounded-lg border border-border/40 bg-muted/30 p-3">
-              <p className="text-xs font-medium text-foreground">
-                {t("settings.vscodeSettingsPath")}
-              </p>
-              <p className="text-xs text-muted-foreground">
-                {t("settings.vscodeSettingsPathDescription")}
-              </p>
-              <Input
-                value={settings.vscodeSettingsPath ?? ""}
-                placeholder={t("settings.vscodeSettingsPathPlaceholder")}
-                className="text-xs"
-                onChange={(e) =>
-                  onChange({
-                    vscodeSettingsPath: e.target.value || undefined,
-                  })
-                }
-              />
+            <div className="ml-11 space-y-3 rounded-lg border border-border/40 bg-muted/30 p-3">
+              <div className="space-y-1.5">
+                <p className="text-xs font-medium text-foreground">
+                  {t("settings.vscodeSettingsPath")}
+                </p>
+                <p className="text-xs text-muted-foreground">
+                  {t("settings.vscodeSettingsPathDescription")}
+                </p>
+                <Input
+                  value={settings.vscodeSettingsPath ?? ""}
+                  placeholder={t("settings.vscodeSettingsPathPlaceholder")}
+                  className="text-xs"
+                  onChange={(e) =>
+                    onChange({
+                      vscodeSettingsPath: e.target.value || undefined,
+                    })
+                  }
+                />
+              </div>
+              <div className="flex items-center gap-2 pt-1 border-t border-border/30">
+                <Button
+                  type="button"
+                  variant="outline"
+                  size="sm"
+                  className="text-xs text-destructive hover:text-destructive"
+                  disabled={isClearing}
+                  onClick={handleClearVscodeConfig}
+                >
+                  <Trash2 className="mr-1.5 h-3.5 w-3.5" />
+                  {t("settings.clearVscodeClaudeConfig")}
+                </Button>
+                <p className="text-xs text-muted-foreground">
+                  {t("settings.clearVscodeClaudeConfigDescription")}
+                </p>
+              </div>
             </div>
           )}
         </div>

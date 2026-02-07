@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "CC Switch",
+    "title": "CC Switch-S",
     "description": "Claude Code・Codex・Gemini CLI のためのオールインワンアシスタント"
   },
   "common": {
@@ -162,7 +162,7 @@
     "deleteProvider": "プロバイダーを削除",
     "deleteProviderMessage": "プロバイダー「{{name}}」を削除してもよろしいですか？この操作は元に戻せません。",
     "removeProvider": "プロバイダーを解除",
-    "removeProviderMessage": "プロバイダー「{{name}}」を設定から解除してもよろしいですか？\n\n解除後、このプロバイダーは無効になりますが、設定データは CC Switch に保持されます。いつでも再追加できます。"
+    "removeProviderMessage": "プロバイダー「{{name}}」を設定から解除してもよろしいですか？\n\n解除後、このプロバイダーは無効になりますが、設定データは CC Switch-S に保持されます。いつでも再追加できます。"
   },
   "settings": {
     "title": "設定",
@@ -194,7 +194,7 @@
       },
       "globalProxy": {
         "title": "グローバル送信プロキシ",
-        "description": "CC Switch が外部 API にアクセスする際のプロキシを設定"
+        "description": "CC Switch-S が外部 API にアクセスする際のプロキシを設定"
       },
       "data": {
         "title": "データ管理",
@@ -242,7 +242,7 @@
     "themeDark": "ダーク",
     "themeSystem": "システム",
     "importExport": "SQL インポート/エクスポート",
-    "importExportHint": "移行や復元用にデータベースの SQL バックアップをインポート/エクスポートします（インポートは CC Switch がエクスポートしたバックアップのみ対応）。",
+    "importExportHint": "移行や復元用にデータベースの SQL バックアップをインポート/エクスポートします（インポートは CC Switch-S がエクスポートしたバックアップのみ対応）。",
     "exportConfig": "SQL バックアップをエクスポート",
     "selectConfigFile": "SQL ファイルを選択",
     "noFileSelected": "ファイルが選択されていません。",
@@ -265,7 +265,7 @@
     "windowBehavior": "ウィンドウ動作",
     "windowBehaviorHint": "最小化動作や Claude プラグイン連携を設定します。",
     "launchOnStartup": "起動時に自動実行",
-    "launchOnStartupDescription": "システム起動時に CC Switch を自動起動します",
+    "launchOnStartupDescription": "システム起動時に CC Switch-S を自動起動します",
     "silentStartup": "サイレント起動",
     "silentStartupDescription": "起動時にメインウィンドウを表示せず、トレイのみで起動",
     "autoLaunchFailed": "自動起動の設定に失敗しました",
@@ -278,6 +278,10 @@
     "vscodeSettingsPath": "VS Code settings.json パス",
     "vscodeSettingsPathDescription": "空欄にするとデフォルトパスを自動検出します。VS Code Insiders などのカスタムパスを指定できます。",
     "vscodeSettingsPathPlaceholder": "空欄でデフォルト（例: C:\\Users\\xxx\\AppData\\Roaming\\Code\\User\\settings.json）",
+    "clearVscodeClaudeConfig": "VS Code プラグイン設定をクリア",
+    "clearVscodeClaudeConfigDescription": "VS Code の claudeCode.environmentVariables 設定を削除して残留を防止します",
+    "clearVscodeClaudeConfigSuccess": "VS Code Claude プラグイン設定をクリアしました",
+    "clearVscodeClaudeConfigFailed": "クリアに失敗しました: {{error}}",
     "skipClaudeOnboarding": "Claude Code の初回確認をスキップ",
     "skipClaudeOnboardingDescription": "オンにすると Claude Code の初回インストール確認をスキップします",
     "appVisibility": {
@@ -325,8 +329,8 @@
     },
     "configDirectoryOverride": "設定ディレクトリの上書き（詳細）",
     "configDirectoryDescription": "WSL などで Claude Code や Codex を使う場合、ここで設定ディレクトリを WSL 側に合わせるとデータを揃えられます。",
-    "appConfigDir": "CC Switch 設定ディレクトリ",
-    "appConfigDirDescription": "CC Switch の保存場所をカスタマイズします（クラウド同期フォルダを指定すると設定を同期できます）",
+    "appConfigDir": "CC Switch-S 設定ディレクトリ",
+    "appConfigDirDescription": "CC Switch-S の保存場所をカスタマイズします（クラウド同期フォルダを指定すると設定を同期できます）",
     "browsePlaceholderApp": "例: C:\\\\Users\\\\Administrator\\\\.cc-switch",
     "claudeConfigDir": "Claude Code 設定ディレクトリ",
     "claudeConfigDirDescription": "Claude の設定ディレクトリ（settings.json）を上書きし、claude.json（MCP）も同じ場所に置きます。",
@@ -365,7 +369,7 @@
     "importFailedError": "設定のインポートに失敗しました: {{message}}",
     "exportFailedError": "設定のエクスポートに失敗しました:",
     "restartRequired": "再起動が必要です",
-    "restartRequiredMessage": "CC Switch の設定ディレクトリを変更すると再起動が必要です。今すぐ再起動しますか？",
+    "restartRequiredMessage": "CC Switch-S の設定ディレクトリを変更すると再起動が必要です。今すぐ再起動しますか？",
     "restartNow": "今すぐ再起動",
     "restartLater": "後で再起動",
     "restartFailed": "アプリの再起動に失敗しました。手動で閉じて再度開いてください。",
@@ -486,15 +490,15 @@
     "officialHint": "💡 公式プロバイダーはブラウザログインで、API Key は不要です",
     "getApiKey": "API Key を取得",
     "partnerPromotion": {
-      "zhipu": "Zhipu GLM は CC Switch の公式パートナーです。リンク経由でチャージすると 10% 割引",
-      "packycode": "PackyCode は CC Switch の公式パートナーです。登録後チャージ時に \"cc-switch\" を入力すると 10% オフ",
+      "zhipu": "Zhipu GLM は CC Switch-S の公式パートナーです。リンク経由でチャージすると 10% 割引",
+      "packycode": "PackyCode は CC Switch-S の公式パートナーです。登録後チャージ時に \"cc-switch\" を入力すると 10% オフ",
       "minimax_cn": "MiniMax Coding Plan 特別価格、Starter ¥9.9 から",
       "minimax_en": "MiniMax Coding Plan Black Friday、Starter が月額 $2（80% OFF）",
       "dmxapi": "Claude Code 専用モデル 66% OFF 実施中！",
-      "cubence": "Cubence は CC Switch の公式パートナーです。登録後チャージ時に \"CCSWITCH\" を入力すると、毎回 10% オフ",
-      "aigocode": "AIGoCode は CC Switch の公式パートナーです。このリンクから登録すると、初回チャージ時に 10% のボーナスクレジットがもらえます！",
-      "rightcode": "RightCode は CC Switch の公式パートナーです。このリンクから登録すると、毎回のチャージに 5% のボーナスクレジットがもらえます！",
-      "aicodemirror": "AICodeMirror は CC Switch の公式パートナーです。このリンクから登録すると20%オフ！"
+      "cubence": "Cubence は CC Switch-S の公式パートナーです。登録後チャージ時に \"CCSWITCH\" を入力すると、毎回 10% オフ",
+      "aigocode": "AIGoCode は CC Switch-S の公式パートナーです。このリンクから登録すると、初回チャージ時に 10% のボーナスクレジットがもらえます！",
+      "rightcode": "RightCode は CC Switch-S の公式パートナーです。このリンクから登録すると、毎回のチャージに 5% のボーナスクレジットがもらえます！",
+      "aicodemirror": "AICodeMirror は CC Switch-S の公式パートナーです。このリンクから登録すると20%オフ！"
     },
     "parameterConfig": "パラメーター設定 - {{name}} *",
     "mainModel": "メインモデル（任意）",
@@ -846,7 +850,7 @@
       "deleteConfirm": "サーバー「{{id}}」を削除しますか？この操作は元に戻せません。",
       "noServers": "まだサーバーがありません",
       "enabledApps": "有効なアプリ",
-      "noImportFound": "インポートする MCP サーバーが見つかりませんでした。すべてのサーバーは CC Switch で管理されています。",
+      "noImportFound": "インポートする MCP サーバーが見つかりませんでした。すべてのサーバーは CC Switch-S で管理されています。",
       "importSuccess": "{{count}} 個の MCP サーバーをインポートしました",
       "apps": {
         "claude": "Claude",
@@ -1152,10 +1156,10 @@
     "noInstalledDescription": "リポジトリからスキルを発見してインストールするか、既存のスキルをインポートしてください",
     "discover": "スキルを発見",
     "import": "既存をインポート",
-    "importDescription": "CC Switch 統合管理にインポートするスキルを選択してください",
+    "importDescription": "CC Switch-S 統合管理にインポートするスキルを選択してください",
     "importSuccess": "{{count}} 件のスキルをインポートしました",
     "importSelected": "選択をインポート ({{count}})",
-    "noUnmanagedFound": "インポートするスキルが見つかりませんでした。すべてのスキルは CC Switch で管理されています。",
+    "noUnmanagedFound": "インポートするスキルが見つかりませんでした。すべてのスキルは CC Switch-S で管理されています。",
     "foundIn": "発見場所",
     "local": "ローカル",
     "uninstallConfirm": "「{{name}}」をアンインストールしますか？すべてのアプリからこのスキルが削除されます。",
@@ -1170,7 +1174,7 @@
   },
   "deeplink": {
     "confirmImport": "プロバイダーのインポートを確認",
-    "confirmImportDescription": "次の設定をディープリンクから CC Switch へインポートします",
+    "confirmImportDescription": "次の設定をディープリンクから CC Switch-S へインポートします",
     "importPrompt": "プロンプトをインポート",
     "importPromptDescription": "このシステムプロンプトをインポートするか確認してください",
     "importMcp": "MCP サーバーをインポート",
