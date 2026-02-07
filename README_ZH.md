@@ -128,7 +128,7 @@ Claude Code / Codex / Gemini 官方渠道低至 3.8 / 0.2 / 0.9 折，充值更�
   - 统一导入/导出 + 双向同步
 
 - **深度链接协议**
-  - `ccswitch://` 协议注册（全平台）
+  - `ccswitchs://` 协议注册（全平台）
   - 通过共享链接一键导入供应商配置
   - 安全验证 + 生命周期集成
 
@@ -214,7 +214,7 @@ Flatpak 安装与运行：
 
 ```bash
 flatpak install --user ./CC-Switch-v{版本号}-Linux.flatpak
-flatpak run com.ccswitch.desktop
+flatpak run com.ccswitchs.desktop
 ```
 
 ## 快速开始

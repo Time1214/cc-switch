@@ -90,7 +90,7 @@ fn redact_url_for_log(url_str: &str) -> String {
     }
 }
 
-/// 统一处理 ccswitch:// 深链接 URL
+/// 统一处理 ccswitchs:// 深链接 URL
 ///
 /// - 解析 URL
 /// - 向前端发射 `deeplink-import` / `deeplink-error` 事件
@@ -101,7 +101,7 @@ fn handle_deeplink_url(
     focus_main_window: bool,
     source: &str,
 ) -> bool {
-    if !url_str.starts_with("ccswitch://") {
+    if !url_str.starts_with("ccswitchs://") {
         return false;
     }
 
@@ -579,7 +579,7 @@ pub fn run() {
                 #[cfg(target_os = "linux")]
                 {
                     // Use Tauri's path API to get correct path (includes app identifier)
-                    // tauri-plugin-deep-link writes to: ~/.local/share/com.ccswitch.desktop/applications/cc-switch-handler.desktop
+                    // tauri-plugin-deep-link writes to: ~/.local/share/com.ccswitchs.desktop/applications/cc-switch-handler.desktop
                     // Only register if .desktop file doesn't exist to avoid overwriting user customizations
                     let should_register = app
                         .path()
@@ -621,7 +621,7 @@ pub fn run() {
                         log::debug!("  URL[{i}]: {}", redact_url_for_log(url_str));
 
                         if handle_deeplink_url(&app_handle, url_str, true, "on_open_url") {
-                            break; // Process only first ccswitch:// URL
+                            break; // Process only first ccswitchs:// URL
                         }
                     }
                 }
@@ -1003,13 +1003,13 @@ pub fn run() {
                         tray::apply_tray_policy(app_handle, true);
                     }
                 }
-                // 处理通过自定义 URL 协议触发的打开事件（例如 ccswitch://...）
+                // 处理通过自定义 URL 协议触发的打开事件（例如 ccswitchs://...）
                 RunEvent::Opened { urls } => {
                     if let Some(url) = urls.first() {
                         let url_str = url.to_string();
                         log::info!("RunEvent::Opened with URL: {url_str}");
 
-                        if url_str.starts_with("ccswitch://") {
+                        if url_str.starts_with("ccswitchs://") {
                             // 解析并广播深链接事件，复用与 single_instance 相同的逻辑
                             match crate::deeplink::parse_deeplink_url(&url_str) {
                                 Ok(request) => {

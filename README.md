@@ -127,7 +127,7 @@ Claude Code / Codex / Gemini official channels at 38% / 2% / 9% of original pric
   - Unified import/export + bidirectional sync
 
 - **Deep Link Protocol**
-  - `ccswitch://` protocol registration (all platforms)
+  - `ccswitchs://` protocol registration (all platforms)
   - One-click import provider configs via shared links
   - Security validation + lifecycle integration
 
@@ -213,7 +213,7 @@ Flatpak install & run:
 
 ```bash
 flatpak install --user ./CC-Switch-v{version}-Linux.flatpak
-flatpak run com.ccswitch.desktop
+flatpak run com.ccswitchs.desktop
 ```
 
 ## Quick Start

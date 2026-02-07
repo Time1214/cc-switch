@@ -127,7 +127,7 @@ Claude Code / Codex / Gemini 公式チャンネルが最安で元価格の 38% /
   - 双方向のインポート/エクスポート + 双方向同期
 
 - **ディープリンクプロトコル**
-  - `ccswitch://` を全プラットフォームで登録
+  - `ccswitchs://` を全プラットフォームで登録
   - 共有リンクからプロバイダ設定をワンクリックでインポート
   - セキュリティ検証 + ライフサイクル統合
 
@@ -213,7 +213,7 @@ Flatpak のインストールと起動：
 
 ```bash
 flatpak install --user ./CC-Switch-v{version}-Linux.flatpak
-flatpak run com.ccswitch.desktop
+flatpak run com.ccswitchs.desktop
 ```
 
 ## クイックスタート
